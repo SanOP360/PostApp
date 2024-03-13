@@ -4,33 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Upload</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
   <h1>Image Upload</h1>
-  <input type="text" id="name" placeholder="Enter name"><br><br>
-  <input type="file" id="image"><br><br>
-  <button onclick="uploadImage()">Upload</button>
+  <div id="formContainer">
+    <input type="text" id="name" placeholder="Enter name"><br><br>
+    <input type="url" id="imageUrl" placeholder="Enter image URL"><br><br>
+    <button onclick="uploadImage()">Upload</button>
+  </div>
+
+  <div id="imageContainer"></div> 
+
+  <button onclick="fetchImages()">Load Images</button>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script>
-    function uploadImage() {
-      const name = document.getElementById('name').value;
-      const image = document.getElementById('image').files[0];
-      
-      const formData = new FormData();
-      formData.append('name', name); // Add name to formData
-      formData.append('image', image);
-      
-      axios.post('http://localhost:3000/images/upload', formData)
-        .then(response => {
-          console.log(response.data);
-          alert('Image uploaded successfully');
-        })
-        .catch(error => {
-          console.error(error);
-          alert('Error uploading image');
-        });
-    }
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
