@@ -12,7 +12,7 @@ app.use(cors());
 app.use("/images", imageRoutes);
 
 sequelize
-  .sync()
+  .sync({alter:true})
   .then(() => {
     console.log("Database synced");
     app.listen(PORT, () => {

@@ -1,6 +1,6 @@
+// image.js
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database");
-const Comment=require('./comments')
 
 const Image = sequelize.define("Image", {
   name: {
@@ -12,9 +12,5 @@ const Image = sequelize.define("Image", {
     allowNull: false,
   },
 });
-
-Image.hasMany(Comment);
-Comment.belongsTo(Image);
-
 
 module.exports = Image;
